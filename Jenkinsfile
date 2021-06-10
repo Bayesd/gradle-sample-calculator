@@ -1,21 +1,21 @@
-pipeline{
+pipeline {
     agents any
     stages {
-        stage('Build'){
+        stage('Build') {
             steps {
-                bat ('.gradlew.bat classes')
+                bat './gradlew.bat classes'
             }
         }
 
-        stage('Test'){
+        stage('Test') {
                     steps {
-                        bat ('.gradlew.bat test')
+                        bat './gradlew.bat test'
             }
         }
 
-        stage('Package'){
+        stage('Package') {
                     steps {
-                        bat ('.gradlew.bat jar')
+                        bat './gradlew.bat jar'
                 }
             }
         }
