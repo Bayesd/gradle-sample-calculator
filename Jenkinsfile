@@ -8,15 +8,24 @@ pipeline {
         }
 
         stage('Test') {
-                    steps {
-                        bat './gradlew.bat test'
+        when {
+            anyOf {
+                    branch 'develop'
+                    branch 'main'
+                    }
+                }
+            steps {
+                bat './gradlew.bat test'
             }
         }
 
         stage('Package') {
-                    steps {
-                        bat './gradlew.bat jar'
-                }
+        when {
+            branch 'main'
+        }
+            steps {
+                bat './gradlew.bat jar'
             }
         }
     }
+}
